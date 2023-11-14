@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+</head>
+<body>
+  <h2>Kalkulator Sederhana</h2>
+  <input type="text" id="input1" placeholder="Masukkan angka pertama">
+  <input type="text" id="input2" placeholder="Masukkan angka kedua">
+  <input type="text" id="result" placeholder="Hasil operasi akan muncul di sini" readonly>
+  <br>
+  <button onclick="calculate('+')">+</button>
+  <button onclick="calculate('-')">-</button>
+  <button onclick="calculate('*')">*</button>
+  <button onclick="calculate('/')">/</button>
+  <button onclick="calculate('%')">%</button>
+
+  <script>
+    function calculate(operator) {
+      const input1 = parseFloat(document.getElementById('input1').value);
+      const input2 = parseFloat(document.getElementById('input2').value);
+      let result;
+
+      if (isNaN(input1) || isNaN(input2)) {
+        result = 'Error: Harap masukkan angka valid';
+      } else {
+        if (operator === '+') {
+          result = input1 + input2;
+        } else if (operator === '-') {
+          result = input1 - input2;
+        } else if (operator === '*') {
+          result = input1 * input2;
+        } else if (operator === '/') {
+          if (input2 !== 0) {
+            result = input1 / input2;
+          } else {
+            result = 'Error: Tidak dapat melakukan pembagian dengan nol';
+          }
+        } else if (operator === '%') {
+          result = input1 % input2;
+        } else {
+          result = 'Error: Operator tidak valid';
+        }
+      }
+
+      document.getElementById('result').value = result;
+    }
+  </script>
+</body>
+</html>
